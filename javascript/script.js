@@ -31,6 +31,14 @@ document.addEventListener('keydown', function(){
     }
 });
 
+document.addEventListener('click', function() {
+    if (!gameStarted && sequence.length == 0){
+        sequenceIndex = 0;
+        gameStarted = true;
+        randomSequence();
+    }
+});
+
 function randomSequence() {
     let nextRandom = Math.floor(Math.random()*4);
     sequence.push(buttons[nextRandom].id);
@@ -40,7 +48,7 @@ function randomSequence() {
 
 function step(){
 
-    if (gameStarted && sequence.length != 0) {
+    if (sequence.length != 0) {
         if (sequenceIndex < (sequence.length)){
             $("button." + sequence[sequenceIndex]).click();
             sequenceIndex ++;
@@ -68,8 +76,9 @@ function compareTo(button){
         else {
             wrong = true;
             $('h1').text('What A Looser!!!🤣');
-            sequence = [];
             setTimeout(function(){
+                sequence = [];
+                gameStarted = false;
                 $('h1').text(headerText);
             },1500);
         }
