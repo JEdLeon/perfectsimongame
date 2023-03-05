@@ -1,0 +1,103 @@
+/*-----tag------*/
+body {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    color: #ffffb0;
+    margin: 0;
+}
+
+
+/*-----main-----*/
+#main {
+    background-color: #304a83;
+    padding: 8% 10%;
+}
+
+.button {
+    margin: 20px;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border: 10px solid black;
+    border-radius: 20%;
+}
+
+.red{
+    background-color: rgba(255, 0, 0, 0.603);
+}
+.red-clicked {
+    background-color: red;
+}
+
+.green {
+    background-color: rgba(0, 128, 0, 0.603);
+}
+.green-clicked {
+    background-color: green;
+}
+
+.blue {
+    background-color: rgba(0, 0, 255, 0.603);
+}
+.blue-clicked {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: rgba(255, 255, 0, 0.603);
+
+}
+.yellow-clicked {
+    background-color: yellow;
+}
+
+
+
+/*-----footer-----*/
+#footer {
+    background-color: #081227;
+    padding: 5% 10% 10%;
+}
+
+
+/*-----@media-----*/
+@media (max-width: 768px) {
+    h1{
+        font-size: 1.8rem;
+    }
+    .button{
+        height: 170px;
+        width: 170px;
+    }
+    p{
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    h1{
+        font-size: 1.6rem;
+    }
+    .button{
+        margin: 15px;
+        height: 140px;
+        width: 140px;
+    }
+    p{
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .button{
+        margin: 12px;
+        height: 120px;
+        width: 120px;
+    }
+    h1{
+        font-size: 1.5rem
+    }
+    p{
+        font-size: 0.7rem
+    }
+}
