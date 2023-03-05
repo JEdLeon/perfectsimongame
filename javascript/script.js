@@ -1,6 +1,7 @@
 var buttons = $('button');
 var sequence = [];
 var gameStarted = false;
+var toBegin = true;
 var sequenceIndex = 0;
 var headerText = $('h1').text();
 var wrong = false;
@@ -24,17 +25,17 @@ for (let button of buttons){
 }
 
 document.addEventListener('keydown', function(){
-    if (!gameStarted && sequence.length == 0){
+    if (toBegin){
         sequenceIndex = 0;
-        gameStarted = true;
+        toBegin = false;
         randomSequence();
     }
 });
 
 document.addEventListener('click', function() {
-    if (!gameStarted && sequence.length == 0){
+    if (toBegin){
         sequenceIndex = 0;
-        gameStarted = true;
+        toBegin = false;
         randomSequence();
     }
 });
@@ -56,7 +57,7 @@ function step(){
         }
         else{
             sequenceIndex = 0;
-            gameStarted = false;
+            gameStarted = true;
             $('h1').text('Level ' + sequence.length + ' Your Turn!');
         }
     }
@@ -64,21 +65,22 @@ function step(){
 
 function compareTo(button){
 
-    if (!gameStarted && sequence.length != 0){
+    if (gameStarted && sequence.length != 0){
         if (button.id === sequence[sequenceIndex]){
             sequenceIndex ++;
             if (!(sequenceIndex < (sequence.length))){
                 sequenceIndex = 0;
-                gameStarted = true;
+                gameStarted = false;
                 setTimeout(randomSequence, 500);
             }
         }
         else {
             wrong = true;
+            sequence = [];
+            gameStarted = false;
             $('h1').text('What A Looser!!!🤣');
             setTimeout(function(){
-                sequence = [];
-                gameStarted = false;
+                toBegin = true;
                 $('h1').text(headerText);
             },1500);
         }
